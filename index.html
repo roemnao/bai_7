@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Foodwagon</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Source Sans Pro' rel='stylesheet'>
+    <script>
+    customElements.define("sale-card", class extends HTMLElement {
+        connectedCallback() {
+            this.innerHTML = `
+                <div class="saleCard vertical">
+                    <div class="saleImage vertical top">
+                        <div class="foodImage">
+                            <img src="${this.getAttribute("image")}">
+                        </div>
+                        <div class="saleText">
+                            <p class="b700">${this.getAttribute("sale")}</p>
+                        </div>
+                    </div>
+                    <div class="vertical info">
+                        <p class="b700">${this.getAttribute("name")}</p>
+                        <div class="dayLeft">
+                            <p class="b700">${this.getAttribute("day")} Days Remaining</p>
+                        </div>
+                    </div>
+                </div>`;
+        }
+    });
+    customElements.define("popular-card", class extends HTMLElement {
+    connectedCallback() {
+        this.innerHTML = `
+            <div class="popularCard vertical">
+                <div class="foodImage">
+                    <img src="${this.getAttribute("image")}">
+                </div>
+                <div class="vertical info">
+                    <p class="foodName b700">${this.getAttribute("name")}</p>
+                    <div class="horizontal place">
+                        <img src="assets/pin.svg">
+                        <p>${this.getAttribute("place")}</p>
+                    </div>
+                    <p class="price b700">${this.getAttribute("price")}</p>
+                </div>
+                <button class="b700">Order Now</button>
+            </div>`;
+    }
+    });
+    customElements.define("restaurant-card", class extends HTMLElement {
+        connectedCallback() {
+            this.innerHTML = `
+                <div class="restaurantCard vertical">
+                    <div class="foodImage">
+                        <img src="${this.getAttribute("image")}">
+                        <div class="horizontal badges">
+                            <div class="badge sale horizontal">
+                                <img src="assets/tag.svg">
+                                <p class="b700">${this.getAttribute("sale")}</p>
+                            </div>
+                            <div class="badge fast horizontal">
+                                <img src="assets/clock.svg">
+                                <p class="b700">Fast</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="horizontal info">
+                        <img class="logo" src="${this.getAttribute("logo")}">
+                        <div class="vertical">
+                            <p class="foodName b700">${this.getAttribute("name")}</p>
+                            <div class="horizontal rating">
+                                <img src="assets/star.svg">
+                                <p class="b700">${this.getAttribute("rating")}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="status ${this.hasAttribute("open") ? "open" : "closed"}">
+                        <p class="b700">${this.hasAttribute("open") ? "Open Now" : "Opens tomorrow"}</p>
+                    </div>
+                </div>`;
+        }
+    });
+    customElements.define("food-search-card", class extends HTMLElement {
+        connectedCallback() {
+            this.innerHTML = `
+                <div class="searchCard">
+                    <img src="${this.getAttribute("image")}">
+                    <p class="foodName b700">${this.getAttribute("name")}</p>
+                </div>`;
+        }
+
+    });
+    customElements.define("food-suggest", class extends HTMLElement {
+        connectedCallback() {
+            const reverse = this.getAttribute("reverse") == "true";
+
+            const image = `
+                <div class="searchImage">
+                    <img src="${this.getAttribute("image")}">
+                </div>`;
+
+            const text = `
+                <div class="searchText vertical">
+                    <h3 class="b700">
+                        ${this.getAttribute("title")}
+                        <span class="highlight">${this.getAttribute("highlight")}</span>
+                    </h3>
+                    <p class="desc b700">${this.getAttribute("desc")}</p>
+                    <button class="b700">Proceed to order &gt;</button>
+                </div>`;
+
+            this.innerHTML = `
+                <div class="searchCard horizontal">
+                    ${reverse ? text + image : image + text}
+                </div>`;
+        }
+    });
+    customElements.define("step-card", class extends HTMLElement {
+        connectedCallback() {
+            this.innerHTML = `
+                <div class="vertical">
+                    <img src="${this.getAttribute("icon")}">
+                    <h4>${this.getAttribute("title")}</h4>
+                    <p>${this.getAttribute("desc")}</p>
+                </div>`;
+        }
+        });
+  </script>
+</head>
+<body>
+  <header class="horizontal">
+    <img class="logo" src="assets/h1.svg">
+    <div class="horizontal a">
+        <p class="b700">Deliver to:</p>
+        <img src="assets/h3.svg">
+        <p class="b400">Current location</p>
+        <p class="b700">Mohammadpur Bus Stand, Dhaka</p>
+    </div>
+    <div class="horizontal b">
+        <div class=""horizontal>
+            <img src="assets/h2.svg">
+            <p class="b700">Search Food</p>
+        </div>
+        <button class="b700"><img src="h3">Login</button>
+    </div>
+</header>
+<section class="region1 horizontal">
+    <sale-card image="assets/r11.svg" sale="15%" name="Greys Vage" day="6"></sale-card>
+    <sale-card image="assets/r12.svg" sale="10%" name="Greys Vage" day="6"></sale-card>
+    <sale-card image="assets/r13.svg" sale="25%" name="Greys Vage" day="7"></sale-card>
+    <sale-card image="assets/r14.svg" sale="20%" name="Greys Vage" day="8"></sale-card>
+</section>
+
+<section class="region2 vertical">
+    <h2>How does it work</h2>
+    <div class="horizontal">
+        <step-card icon="assets/r21.svg" title="Select location" desc="Choose the location where your food will be delivered."></step-card>
+        <step-card icon="assets/r22.svg" title="Choose order" desc="Check over hundreds of menus to pick your favorite food"></step-card>
+        <step-card icon="assets/r23.svg" title="Pay advanced" desc="It's quick, safe, and simple. Select several methods of payment"></step-card>
+        <step-card icon="assets/r24.svg" title="Enjoy meals" desc="Food is made and delivered directly to your home."></step-card>
+    </div>
+</section>
+
+<section class="region3 vertical">
+    <h2>Popular items</h2>
+    <div class="horizontal">
+        <popular-card image="assets/r31.svg" name="Cheese Burger" place="Burger Arena" price="$3.88"></popular-card>
+        <popular-card image="assets/r32.svg" name="Toffe's Cake" place="Top Sticks" price="$4.00"></popular-card>
+        <popular-card image="assets/r33.svg" name="Dancake" place="Cake World" price="$1.99"></popular-card>
+        <popular-card image="assets/r34.svg" name="Crispy Sandwitch" place="Fastfood Dine" price="$3.00"></popular-card>
+        <popular-card image="assets/r35.svg" name="Thai Soup" place="Foody man" price="$2.79"></popular-card>
+    </div>
+</section>
+
+<section class="region4 vertical">
+    <h2>Featured Restaurants</h2>
+    <div class="grid">
+        <restaurant-card image="assets/r41.svg" logo="assets/l1.svg" sale="20% off" name="Foodworld" rating="46" open="false"></restaurant-card>
+        <restaurant-card image="assets/r42.svg" logo="assets/l2.svg" sale="15% off" name="Pizzahub" rating="40" open="false"></restaurant-card>
+        <restaurant-card image="assets/r43.svg" logo="assets/l3.svg" sale="10% off" name="Donuts hut" rating="20" open="true"></restaurant-card>
+        <restaurant-card image="assets/r44.svg" logo="assets/l4.svg" sale="15% off" name="Donuts hut" rating="50" open="true"></restaurant-card>
+        <restaurant-card image="assets/r45.svg" logo="assets/l5.svg" sale="10% off" name="Ruby Tuesday" rating="26" open="true"></restaurant-card>
+        <restaurant-card image="assets/r46.svg" logo="assets/l6.svg" sale="25% off" name="Kuakata Fried Chicken" rating="53" open="true"></restaurant-card>
+        <restaurant-card image="assets/r47.svg" logo="assets/l7.svg" sale="10% off" name="Red Square" rating="45" open="true"></restaurant-card>
+        <restaurant-card image="assets/r48.svg" logo="assets/l8.svg" sale="10% off" name="Taco Bell" rating="35" open="true"></restaurant-card>
+    </div>
+    <button>View All</button>
+</section>
+
+<section class="region5">
+    <div class="top vertical">
+        <div class="horizontal">
+            <h2>Search by Food</h2>
+            <div class="horizontal">
+                <p>View All</p>
+                <button>&lt;</button>
+                <button>&gt;</button>
+            </div>
+        </div>
+        <div class="horizontal">
+            <div class="vertical">
+                <img src="assets/r51.svg">
+                <p>Pizza</p>
+            </div>
+            <div class="vertical">
+                <img src="assets/r52.svg">
+                <p>Burger</p>
+            </div>
+            <div class="vertical">
+                <img src="assets/r53.svg">
+                <p>Noodles</p>
+            </div>
+            <div class="vertical">
+                <img src="assets/r54.svg">
+                <p>Sub-sandiwch</p>
+            </div>
+            <div class="vertical">
+                <img src="assets/r55.svg">
+                <p>Chowmein</p>
+            </div>
+            <div class="vertical">
+                <img src="assets/r56.svg">
+                <p>Steak</p>
+            </div>
+        </div>
+    </div>
+    <div class="bottom horizontal line">
+        <div class="horizontal">
+            <img src="assets/r57.svg">
+            <p>Daily Discounts</p>
+        </div>
+        <div class="horizontal">
+            <img src="assets/r58.svg">
+            <p>Live Tracing</p>
+        </div>
+        <div class="horizontal">
+            <img src="assets/r59.svg">
+            <p>Quick Delivery</p>
+        </div>
+    </div>
+</section>
+
+<section class="region6 vertical">
+    <food-suggest image="assets/r61.svg" title="Best deals" highlight="Crispy Sandwiches" desc="Enjoy the large size of sandwiches."></food-suggest>
+    <food-suggest image="assets/r62.svg" title="Celebrate parties with" highlight="Fried Chicken" desc="Get the best fried chicken." reverse="true"></food-suggest>
+    <food-suggest image="assets/r63.svg" title="Wanna eat hot & spicy" highlight="Pizza?" desc="Pair up with a friend and enjoy the hot and crispy pizza pops."></food-suggest>
+</section>
+
+<section class="region7 vertical" style="background-image: url('assets/r7.svg');">
+    <img src="assets/r71.svg">
+    <div class="vertical">
+        <h2>Are you ready to order with the best deals?</h2>
+        <button>Proceed to order &gt;</button>
+    </div>
+</section>
+<footer>
+    <div class="top vertical">
+        <h4>Our top cities</h4>
+        <div class="horizontal">
+        <div class="vertical">
+            <p>San Francisco</p>
+            <p>Miami</p>
+            <p>San Diego</p>
+            <p>East Bay</p>
+            <p>Long Beach</p>
+        </div>
+        <div class="vertical">
+            <p>Los Angeles</p>
+            <p>Washington DC</p>
+            <p>Seattle</p>
+            <p>Portland</p>
+            <p>Nashville</p>
+        </div>
+        <div class="vertical">
+            <p>New York City</p>
+            <p>Orange County</p>
+            <p>Atlanta</p>
+            <p>Charlotte</p>
+            <p>Denver</p>
+        </div>
+        <div class="vertical">
+            <p>Chicago</p>
+            <p>Phoenix</p>
+            <p>Las Vegas</p>
+            <p>Sacramento</p>
+            <p>Oklahoma City</p>
+        </div>
+        <div class="vertical">
+            <p>Columbus</p>
+            <p>New Mexico</p>
+            <p>Albuquerque</p>
+            <p>Sacramento</p>
+            <p>New Orleans</p>
+        </div>
+    </div>
+    </div>
+    <hr>
+    <div class="middle horizontal">
+        <div class="vertical">
+            <h4>Company</h4>
+            <p>About us</p>
+            <p>Team</p>
+            <p>Careers</p>
+            <p>Blog</p>
+        </div>
+        <div class="vertical">
+            <h4>Contact</h4>
+            <p>Help &amp; Support</p>
+            <p>Partner with us</p>
+            <p>Ride with us</p>
+        </div>
+        <div class="vertical">
+            <h4>Legal</h4>
+            <p>Terms &amp; Conditions</p>
+            <p>Refund &amp; Cancellation</p>
+            <p>Privacy Policy</p>
+            <p>Cookie Policy</p>
+        </div>
+    <div class="vertical">
+        <p>FOLLOW US</p>
+        <div class="horizontal">
+            <img src="assets/f1.svg">
+            <img src="assets/f2.svg">
+            <img src="assets/f3.svg">
+        </div>
+        <p>Receive exclusive offers in your mailbox</p>
+        <div class="horizontal">
+            <div class="horizontal">
+                <img src="assets/f4.svg">
+                <p>Enter Your email</p>
+            </div>
+            <button>Subscribe</button>
+        </div>
+    </div>
+    </div>
+    <hr>
+    <div class="bottom horizontal">
+        <p>All rights Reserved © Your Company, 2021</p>
+        <p>Made with ♥ by Themewagon</p>
+    </div>
+</footer>
+
+</body>
+</html>

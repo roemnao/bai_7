@@ -1,0 +1,485 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+sale-card, popular-card, restaurant-card, food-search-card, step-card {
+  display: block;
+}
+img {
+  max-width: 100%;
+}
+
+button {
+  background: #F17228;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+hr {
+  margin: 30px 0;
+  border: none;
+  border-top: 1px solid #616161;
+}
+
+
+
+.horizontal {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.b400 {
+  font-weight: 400;
+  font-family: 'Open Sans';
+}
+
+.b700 {
+  font-weight: 700;
+  font-family: 'Source Sans Pro';
+}
+
+section {
+  padding: 60px 100px;
+}
+
+section h2 {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 40px;
+  color: #212121;
+}
+
+header {
+  justify-content: space-between;
+  padding: 20px 220px;
+  background: rgba(255, 255, 255, 1);
+  align-items: center;
+}
+
+header .logo {
+  height: 36px;
+  width: 197px;
+}
+
+header .horizontal img{
+  margin: 0px 9px 0px 12px;
+}
+header .horizontal .b400{
+  margin-right: 4px;
+}
+header .b{
+  gap: 30px;
+}
+header button {
+  width: 118px;
+  height: 46px;
+  background-color: #fff;
+  color: linear-gradient(right, rgba(255, 184, 0, 1), rgba(255, 138, 0, 1));
+  box-shadow: 0px 20px 40px rgba(255, 174, 0, 0.29);
+  box-shadow: 0px 5px 10px rgba(255, 174, 0, 0.29);
+}
+
+.region1 {
+  background: #FFB30E;
+  justify-content: center;
+  gap: 24px;
+  padding-bottom: 80px;
+}
+
+.saleCard {
+  width: 280px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.saleImage {
+  position: relative;
+}
+
+.saleImage img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.saleText {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #F17228;
+  color: #fff;
+  font-weight: bold;
+  padding: 4px 14px;
+  border-radius: 20px;
+}
+
+.saleCard .info {
+  padding: 16px;
+  gap: 10px;
+}
+
+.saleCard .info p {
+  font-weight: bold;
+}
+
+.dayLeft {
+  align-self: flex-start;
+  background: #e6f3d9;
+  color: #79B93C;
+  font-size: 13px;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.region2 > .horizontal {
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.region2 step-card {
+  flex: 1;
+}
+
+.region2 .vertical {
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.region2 img {
+  height: 90px;
+}
+
+.region2 p {
+  font-size: 14px;
+  color: #616161;
+}
+
+.region3 {
+  background: #F5F5F5;
+}
+
+.region3 > .horizontal {
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+.popularCard {
+  width: 220px;
+  height: 100%;
+  align-items: center;
+  text-align: center;
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px 20px;
+}
+
+.popularCard .foodImage img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+}
+
+.popularCard .info {
+  align-items: center;
+  gap: 6px;
+  margin: 16px 0;
+}
+
+.foodName {
+  font-weight: bold;
+  font-size: 18px;
+  color: #212121;
+}
+
+.place {
+  gap: 6px;
+  font-size: 14px;
+}
+
+.place img {
+  width: 14px;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 20px;
+  color: #F17228;
+}
+
+.region4 {
+  align-items: center;
+}
+
+.grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.restaurantCard {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+.restaurantCard .foodImage {
+  position: relative;
+}
+
+.restaurantCard .foodImage > img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.badges {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  gap: 8px;
+}
+
+.badge {
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  color: #fff;
+}
+
+.badge img {
+  width: 14px;
+}
+
+.badge.sale {
+  background: #F17228;
+}
+
+.badge.fast {
+  background: #79B93C;
+}
+
+.restaurantCard .info {
+  gap: 12px;
+  padding: 16px;
+}
+
+.restaurantCard .logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.rating {
+  gap: 4px;
+  font-size: 13px;
+}
+
+.rating img {
+  width: 14px;
+}
+
+.status {
+  padding: 10px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.status.open {
+  background: #e6f3d9;
+  color: #79B93C;
+}
+
+.status.closed {
+  background: #fde8dc;
+  color: #F17228;
+}
+
+.region5 {
+  background: #F5F5F5;
+}
+
+.region5 .top {
+  gap: 30px;
+}
+
+.region5 .top > .horizontal:first-child {
+  justify-content: space-between;
+}
+
+.region5 .top > .horizontal:first-child > .horizontal {
+  gap: 12px;
+}
+
+.region5 h2 {
+  margin: 0;
+}
+
+.region5 .top button {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 50%;
+  background: #fff;
+  color: #424242;
+}
+
+.region5 .top > .horizontal:last-child {
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.region5 .top .vertical {
+  align-items: center;
+  gap: 12px;
+}
+
+.region5 .top .vertical img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.region5 .bottom {
+  justify-content: space-between;
+  margin-top: 50px;
+  padding: 30px;
+  background: #fff;
+  border-radius: 12px;
+}
+
+.region5 .bottom > .horizontal {
+  gap: 16px;
+  flex: 1;
+  justify-content: center;
+}
+
+.region5 .bottom img {
+  height: 56px;
+}
+
+.region6 {
+  gap: 30px;
+}
+
+.searchCard {
+  justify-content: space-between;
+  gap: 40px;
+  background: #F5F5F5;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.searchImage {
+  flex: 1;
+}
+
+.searchImage img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+}
+
+.searchText {
+  flex: 1;
+  gap: 16px;
+  padding: 30px 48px;
+  align-items: flex-start;
+}
+
+.searchText h3 {
+  font-size: 34px;
+  color: #212121;
+}
+
+.highlight {
+  display: block;
+  color: #F17228;
+}
+
+.region7 {
+  background: #FFB30E;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.region7 img {
+  height: 200px;
+}
+
+.region7 .vertical {
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+  flex: 1;
+}
+
+.region7 h2 {
+  margin: 0;
+}
+
+.region7 button {
+  background: #212121;
+}
+
+footer {
+  background: #212121;
+  color: #cfcfcf;
+  padding: 60px 100px 30px;
+  font-size: 14px;
+}
+
+footer h4 {
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+footer p {
+  margin: 6px 0;
+}
+
+footer .top > .horizontal {
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+footer .middle {
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+footer .middle > .vertical:last-child {
+  gap: 12px;
+}
+
+footer .middle > .vertical:last-child .horizontal {
+  gap: 12px;
+}
+
+footer .bottom {
+  justify-content: space-between;
+  color: #9e9e9e;
+}
