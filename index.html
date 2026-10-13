@@ -2,24 +2,32 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Foodwagon</title>
+    <title>bai_7</title>
     <link rel="stylesheet" href="style.css">
     <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Source Sans Pro' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=0.9">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    
     <script>
     customElements.define("sale-card", class extends HTMLElement {
         connectedCallback() {
             this.innerHTML = `
-                <div class="saleCard vertical">
-                    <div class="saleImage vertical top">
+                <div class="saleCard vertical" style="gap: 32px;">
+                    <div class="saleImage vertical top" >
                         <div class="foodImage">
                             <img src="${this.getAttribute("image")}">
                         </div>
-                        <div class="saleText">
-                            <p class="b700">${this.getAttribute("sale")}</p>
+                        <div class="saleText horizontal" >
+                            <p class="b700 a" style="font-size: 68px">${this.getAttribute("sale")}</p>
+                            <div class="vertical">
+                                <p class="b700" style="font-size: 35px">%</p>
+                                <p class="b700 c" style="font-size:22px">off</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="vertical info">
+                    <div class="vertical info"  style="gap: 14px">
                         <p class="b700">${this.getAttribute("name")}</p>
                         <div class="dayLeft">
                             <p class="b700">${this.getAttribute("day")} Days Remaining</p>
@@ -49,6 +57,7 @@
     });
     customElements.define("restaurant-card", class extends HTMLElement {
         connectedCallback() {
+            
             this.innerHTML = `
                 <div class="restaurantCard vertical">
                     <div class="foodImage">
@@ -74,8 +83,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="status ${this.hasAttribute("open") ? "open" : "closed"}">
-                        <p class="b700">${this.hasAttribute("open") ? "Open Now" : "Opens tomorrow"}</p>
+                    <div class="status ${this.getAttribute("open") == "true" ? "open" : "closed"}">
+                        <p class="b700">${this.getAttribute("open") == "true" ? "Open Now" : "Opens tomorrow"}</p>
                     </div>
                 </div>`;
         }
@@ -101,11 +110,12 @@
 
             const text = `
                 <div class="searchText vertical">
-                    <h3 class="b700">
-                        ${this.getAttribute("title")}
-                        <span class="highlight">${this.getAttribute("highlight")}</span>
-                    </h3>
-                    <p class="desc b700">${this.getAttribute("desc")}</p>
+                    <div class="vertical">
+                        <h3 class="b700">
+                            ${this.getAttribute("title")}<span class="highlight">${this.getAttribute("highlight")}</span>
+                        </h3>
+                        <p class="desc b700">${this.getAttribute("desc")}</p>
+                    </div>
                     <button class="b700">Proceed to order &gt;</button>
                 </div>`;
 
@@ -120,8 +130,10 @@
             this.innerHTML = `
                 <div class="vertical">
                     <img src="${this.getAttribute("icon")}">
-                    <h4>${this.getAttribute("title")}</h4>
-                    <p>${this.getAttribute("desc")}</p>
+                    <div class="vertical" >
+                        <h4>${this.getAttribute("title")}</h4>
+                        <p>${this.getAttribute("desc")}</p>
+                    </div>
                 </div>`;
         }
         });
@@ -131,24 +143,42 @@
   <header class="horizontal">
     <img class="logo" src="assets/h1.svg">
     <div class="horizontal a">
-        <p class="b700">Deliver to:</p>
+        <p class="b700" >Deliver to:</p>
         <img src="assets/h3.svg">
         <p class="b400">Current location</p>
         <p class="b700">Mohammadpur Bus Stand, Dhaka</p>
     </div>
     <div class="horizontal b">
-        <div class=""horizontal>
+        <div class="horizontal">
             <img src="assets/h2.svg">
             <p class="b700">Search Food</p>
         </div>
-        <button class="b700"><img src="h3">Login</button>
+        <button class="b700"><img src="assets/h4.svg">Login</button>
     </div>
 </header>
+<section class="region0 horizontal">
+    <div class="vertical">
+        <h1>Are you starving?</h1>
+        <p class="b400" style="color: rgba(80, 79, 79, 1)">Within a few clicks, find meals that are accessible near you</p>
+        <div class="searchBox vertical">
+            <div class="tabs horizontal b700">
+                <div class="horizontal a"><img src="assets/r01.svg"><p>Delivery</p></div>
+                <div class="horizontal b"><img src="assets/r02.svg"><p>Pickup</p></div>
+            </div>
+            <div class="input horizontal" style="align-items: center;">
+                
+                <div class="horizontal b400"><i class="fas fa-map-marker-alt"></i><input type="text" placeholder="Enter Your Address"></div>
+                <button><i class="fas fa-search" style="color: #fff"></i> Find Food</button>
+            </div>
+        </div>
+    </div>
+    <img src="assets/r0.png">
+</section>
 <section class="region1 horizontal">
-    <sale-card image="assets/r11.svg" sale="15%" name="Greys Vage" day="6"></sale-card>
-    <sale-card image="assets/r12.svg" sale="10%" name="Greys Vage" day="6"></sale-card>
-    <sale-card image="assets/r13.svg" sale="25%" name="Greys Vage" day="7"></sale-card>
-    <sale-card image="assets/r14.svg" sale="20%" name="Greys Vage" day="8"></sale-card>
+    <sale-card image="assets/r11.svg" sale="15" name="Greys Vage" day="6"></sale-card>
+    <sale-card image="assets/r12.svg" sale="10" name="Greys Vage" day="6"></sale-card>
+    <sale-card image="assets/r13.svg" sale="25" name="Greys Vage" day="7"></sale-card>
+    <sale-card image="assets/r14.svg" sale="20" name="Greys Vage" day="8"></sale-card>
 </section>
 
 <section class="region2 vertical">
@@ -163,7 +193,7 @@
 
 <section class="region3 vertical">
     <h2>Popular items</h2>
-    <div class="horizontal">
+    <div class="horizontal" style="justify-content: center;">
         <popular-card image="assets/r31.svg" name="Cheese Burger" place="Burger Arena" price="$3.88"></popular-card>
         <popular-card image="assets/r32.svg" name="Toffe's Cake" place="Top Sticks" price="$4.00"></popular-card>
         <popular-card image="assets/r33.svg" name="Dancake" place="Cake World" price="$1.99"></popular-card>
@@ -174,7 +204,7 @@
 
 <section class="region4 vertical">
     <h2>Featured Restaurants</h2>
-    <div class="grid">
+    <div class="horizontal">
         <restaurant-card image="assets/r41.svg" logo="assets/l1.svg" sale="20% off" name="Foodworld" rating="46" open="false"></restaurant-card>
         <restaurant-card image="assets/r42.svg" logo="assets/l2.svg" sale="15% off" name="Pizzahub" rating="40" open="false"></restaurant-card>
         <restaurant-card image="assets/r43.svg" logo="assets/l3.svg" sale="10% off" name="Donuts hut" rating="20" open="true"></restaurant-card>
@@ -184,66 +214,74 @@
         <restaurant-card image="assets/r47.svg" logo="assets/l7.svg" sale="10% off" name="Red Square" rating="45" open="true"></restaurant-card>
         <restaurant-card image="assets/r48.svg" logo="assets/l8.svg" sale="10% off" name="Taco Bell" rating="35" open="true"></restaurant-card>
     </div>
-    <button>View All</button>
+    <button>View All <span>&gt;</span></button>
 </section>
 
-<section class="region5">
-    <div class="top vertical">
-        <div class="horizontal">
+<section class="region5" >
+    <div class="bigOne vertical" style="gap: 45px">
+        <div class="horizontal a">
             <h2>Search by Food</h2>
             <div class="horizontal">
-                <p>View All</p>
-                <button>&lt;</button>
-                <button>&gt;</button>
+                <p class="b700">View All <span>&gt;</span></p>
+                <div class="horizontal">
+                    <button>&lt;</button>
+                    <button>&gt;</button>
+                </div>
             </div>
         </div>
-        <div class="horizontal">
+        <div class="horizontal b">
             <div class="vertical">
                 <img src="assets/r51.svg">
-                <p>Pizza</p>
+                <p class="b700">Pizza</p>
             </div>
             <div class="vertical">
                 <img src="assets/r52.svg">
-                <p>Burger</p>
+                <p class="b700">Burger</p>
             </div>
             <div class="vertical">
                 <img src="assets/r53.svg">
-                <p>Noodles</p>
+                <p class="b700">Noodles</p>
             </div>
             <div class="vertical">
                 <img src="assets/r54.svg">
-                <p>Sub-sandiwch</p>
+                <p class="b700">Sub-sandiwch</p>
             </div>
             <div class="vertical">
                 <img src="assets/r55.svg">
-                <p>Chowmein</p>
+                <p class="b700">Chowmein</p>
             </div>
             <div class="vertical">
                 <img src="assets/r56.svg">
-                <p>Steak</p>
+                <p class="b700">Steak</p>
             </div>
         </div>
     </div>
-    <div class="bottom horizontal line">
+    
+</section>
+<section class="horizontal c">
+    <div class="bigOne horizontal">
         <div class="horizontal">
             <img src="assets/r57.svg">
             <p>Daily Discounts</p>
         </div>
+        <hr>
         <div class="horizontal">
             <img src="assets/r58.svg">
             <p>Live Tracing</p>
         </div>
+        <hr>
         <div class="horizontal">
             <img src="assets/r59.svg">
             <p>Quick Delivery</p>
         </div>
     </div>
 </section>
-
 <section class="region6 vertical">
-    <food-suggest image="assets/r61.svg" title="Best deals" highlight="Crispy Sandwiches" desc="Enjoy the large size of sandwiches."></food-suggest>
-    <food-suggest image="assets/r62.svg" title="Celebrate parties with" highlight="Fried Chicken" desc="Get the best fried chicken." reverse="true"></food-suggest>
-    <food-suggest image="assets/r63.svg" title="Wanna eat hot & spicy" highlight="Pizza?" desc="Pair up with a friend and enjoy the hot and crispy pizza pops."></food-suggest>
+    
+        <food-suggest image="assets/r61.svg" title="Best deals" highlight="Crispy Sandwiches" desc="Enjoy the large size of sandwiches."></food-suggest>
+        <food-suggest image="assets/r62.svg" title="Celebrate parties with" highlight="Fried Chicken" desc="Get the best fried chicken." reverse="true"></food-suggest>
+        <food-suggest image="assets/r63.svg" title="Wanna eat hot & spicy" highlight="Pizza?" desc="Pair up with a friend and enjoy the hot and crispy pizza pops."></food-suggest>
+    
 </section>
 
 <section class="region7 vertical" style="background-image: url('assets/r7.svg');">
@@ -294,7 +332,7 @@
         </div>
     </div>
     </div>
-    <hr>
+    <hr style="margin-top: 60px;">
     <div class="middle horizontal">
         <div class="vertical">
             <h4>Company</h4>
@@ -333,10 +371,10 @@
         </div>
     </div>
     </div>
-    <hr>
+    <hr style="margin-top: 30px">
     <div class="bottom horizontal">
         <p>All rights Reserved © Your Company, 2021</p>
-        <p>Made with ♥ by Themewagon</p>
+        <p>Made with <span style="color: orange">♥</span> by Themewagon</p>
     </div>
 </footer>
 
